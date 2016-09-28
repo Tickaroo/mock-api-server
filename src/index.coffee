@@ -12,9 +12,14 @@ class MockApi
     if @options.logToFile
       args.push '--log-to-file'
       args.push @options.logToFile
-
+    if @options.apiPath
+      args.push '--api-path'
+      args.push @options.apiPath
+    if @options.staticPath
+      args.push '--static-path'
+      args.push @options.staticPath
+      
     child_process.spawn "#{__dirname}/../bin/mock-api-server", args, {stdio: "inherit"}
-
 
     setTimeout done, 500
  
